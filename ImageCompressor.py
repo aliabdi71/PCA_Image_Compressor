@@ -7,16 +7,12 @@ import threading
 def matrixMul(X, Y):
 	result = np.zeros((len(X), len(Y[0])))
 	t1 = threading.Thread(target=calculator, args = (X,Y,result,0))
-	#t1.daemon = True
 	t1.start()
 	t2 = threading.Thread(target=calculator, args = (X,Y,result,16))
-	#t2.daemon = True
 	t2.start()
 	t3 = threading.Thread(target=calculator, args = (X,Y,result,32))
-	#t3.daemon = True
 	t3.start()
 	t4 = threading.Thread(target=calculator, args = (X,Y,result,48))
-	#t4.daemon = True
 	t4.start()
 	t1.join()
 	t2.join()
